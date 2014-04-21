@@ -13,6 +13,9 @@ group :production do
   gem 'rails_12factor'
 end
 
+# HAML
+gem "haml-rails"
+
 # Paperclip
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
