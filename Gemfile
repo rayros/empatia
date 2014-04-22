@@ -13,6 +13,9 @@ group :production do
   gem 'rails_12factor'
 end
 
+# Sitemap generator
+gem 'sitemap_generator'
+
 # FriendlyId
 gem 'friendly_id', '~> 5.0.0'
 

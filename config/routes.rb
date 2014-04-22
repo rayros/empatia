@@ -1,5 +1,5 @@
 Kwejk::Application.routes.draw do
-  resources :posts, path: '/obrazek/'
+  resources :posts, path: '/obrazki/'
   resources :users
   root 'posts#index'
   #get "welcome/index"
