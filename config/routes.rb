@@ -1,7 +1,26 @@
 Kwejk::Application.routes.draw do
-  resources :posts, path: '/obrazki/'
-  resources :users
+  resource :password, only: [:edit, :update], path: '/haslo/', path_names: { edit: 'zmien' } 
+  #resource :session, only: [:new, :create, :destroy ]
+  match '/rejestracja', to: 'users#new', via: 'get'
+  match '/logowanie', to: 'session#new', via: 'get'
+  match '/wylogowanie', to: 'session#destroy', via: 'delete'
+  resource :user,
+    only: [:edit, :show, :update, :destroy ],
+    path: '/moje/',
+    path_names: { edit: 'edytuj' } do
+    resources :posts,
+      path: '/obrazek/',
+      only: [:show, :destroy, :edit, :update ] 
+  end
+  resources :users, path: '/uzytkownik/', only: [:show] do
+    resources :posts,
+    path: '/obrazek/',
+    only: [:show]
+  end
+  #resources :posts, path: '/obrazki/'
+  #resources :users
   root 'posts#index'
+  
   #get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

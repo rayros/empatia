@@ -6,7 +6,9 @@
 %p
   %b Admin:
   = @user.admin
-
+%p
+  %b password_digest
+  = @user.password_digest
 = link_to 'Edit', edit_user_path(@user)
 \|
 = link_to 'Back', users_path

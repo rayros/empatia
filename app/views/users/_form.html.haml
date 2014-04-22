@@ -12,5 +12,11 @@
   .field
     = f.label :admin
     = f.check_box :admin
+  .field
+    = f.label :password
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation, "Confiramtion"
+    = f.password_field :password_confirmation
   .actions
     = f.submit 'Save'

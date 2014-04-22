@@ -10,6 +10,9 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
+  def sample_file(filename = "sample-one.jpg")
+    File.new("test/fixtures/#{filename}")
+  end
 
   # Add more helper methods to be used by all tests here...
 end

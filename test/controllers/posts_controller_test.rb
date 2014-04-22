@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   setup do
-    @post = posts(:one)
+    @post = posts(:kwejk)
   end
 
   test "should get index" do
@@ -13,10 +13,10 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should create post" do
     assert_difference('Post.count') do
-      post :create, post: { title: @post.title, description: @post.description }
+      post :create, post: { title: @post.title, description: @post.description, picture: fixture_file_upload('sample-one.jpg', 'image/jpg') }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to post_path(assigns(:post))
   end
 
   test "should edit post" do
@@ -34,7 +34,7 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should destroy user" do
+  test "should destroy post" do
     assert_difference('Post.count', -1) do
       delete :destroy, id: @post
     end
