@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id                   :integer          not null, primary key
+#  title                :string(255)
+#  description          :text
+#  created_at           :datetime
+#  updated_at           :datetime
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#  slug                 :string(255)
+#  user_id              :integer
+#  accepted             :boolean          default(FALSE), not null
+#
+# Indexes
+#
+#  index_posts_on_slug     (slug) UNIQUE
+#  index_posts_on_user_id  (user_id)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 kwejk:
   title: Nowy kwejk

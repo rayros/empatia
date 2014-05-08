@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id                   :integer          not null, primary key
+#  title                :string(255)
+#  description          :text
+#  created_at           :datetime
+#  updated_at           :datetime
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#  slug                 :string(255)
+#  user_id              :integer
+#  accepted             :boolean          default(FALSE), not null
+#
+# Indexes
+#
+#  index_posts_on_slug     (slug) UNIQUE
+#  index_posts_on_user_id  (user_id)
+#
+
 class Post < ActiveRecord::Base
   belongs_to :user
   validates :title, presence: true
@@ -8,7 +31,7 @@ class Post < ActiveRecord::Base
     :url => "/:class/:id/:style/:basename.:extension"
 #    :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
-  validates_attachment :picture, 
+  validates_attachment :picture,
     :presence => true,
     :size => { :in => 0..2000.kilobytes }
 

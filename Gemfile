@@ -1,10 +1,39 @@
 source 'https://rubygems.org'
 
-group :development do
+group :development, :test do
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-end
 
+  # Rspec
+  gem 'rspec-rails'
+
+  # Factory girl
+  gem 'factory_girl_rails'
+
+  # Better errors
+  gem "better_errors"
+
+  # Annotate
+  # Tableki w bd dla modelu na górze
+  gem 'annotate'
+
+  # Flay
+  # Szukanie podobieństw w kodzie
+  gem 'flay'
+
+  # ruby2ruby
+  # require for flay --diff
+  gem 'ruby2ruby'
+
+  gem "hirb"
+
+  gem "rails_best_practices"
+
+  gem 'railroady'
+    
+end
+gem 'simplecov', :require => false, :group => :test
 group :production do
   # Use postgresql as the database for Active Record
   gem 'pg'
@@ -12,6 +41,15 @@ group :production do
   # Heroku gem
   gem 'rails_12factor'
 end
+
+# To generate fake data
+gem 'faker'
+
+# To get random images
+gem 'image_suckr', github: 'rayros/image_suckr'
+
+# Devise
+gem 'devise'
 
 # Sitemap generator
 gem 'sitemap_generator'
