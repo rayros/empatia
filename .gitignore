@@ -18,3 +18,5 @@
 /public/posts
 /doc
 *.swp
+/test/fixtures/fake.jpg
+/test/fixtures/sample.jpg
