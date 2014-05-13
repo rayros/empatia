@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe HomeController do
+describe PostsController do
   describe "GET 'index'" do
   include HomeHelpers
     before(:all) do

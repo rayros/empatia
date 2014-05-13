@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/pkurek/flatui-rails.git
+  revision: e7438a8cca805a80b39e8385021695d19091a7f1
+  specs:
+    flatui-rails (0.0.4)
+      bootstrap-sass (>= 2.2.2)
+      railties (>= 3.1)
+      sass-rails (>= 3.2.0)
+
+GIT
   remote: git://github.com/rayros/image_suckr.git
   revision: 12176e0f0ee89b88f7658385bb341c0dbd1f898d
   specs:
@@ -50,6 +59,8 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -66,6 +77,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     colored (1.2)
+    decent_exposure (2.3.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -216,10 +228,13 @@ DEPENDENCIES
   annotate
   bcrypt (~> 3.1.7)
   better_errors
+  bootstrap-sass
   coffee-rails (~> 4.0.0)
+  decent_exposure
   devise
   factory_girl_rails
   faker
+  flatui-rails!
   flay
   friendly_id (~> 5.0.0)
   haml-rails

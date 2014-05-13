@@ -1,13 +1,12 @@
 Kwejk::Application.routes.draw do
-  get "example/index"
-  get "home/index"
-  get "home/new"
-  get "home/waiting_room"
-  get "home/show"
+  resources :posts do
+    member do
+      get 'mark_accepted'
+    end
+  end
   devise_for :admins
   devise_for :users
-  resources :posts, except: [:update]
-  root 'home#index'
+  root 'posts#index'
   #get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

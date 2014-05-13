@@ -4,34 +4,24 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-
   # Rspec
   gem 'rspec-rails'
-
   # Factory girl
   gem 'factory_girl_rails'
-
   # Better errors
   gem "better_errors"
-
   # Annotate
   # Tableki w bd dla modelu na górze
   gem 'annotate'
-
   # Flay
   # Szukanie podobieństw w kodzie
   gem 'flay'
-
   # ruby2ruby
   # require for flay --diff
   gem 'ruby2ruby'
-
   gem "hirb"
-
   gem "rails_best_practices"
-
   gem 'railroady'
-    
 end
 gem 'simplecov', :require => false, :group => :test
 group :production do
@@ -41,6 +31,15 @@ group :production do
   # Heroku gem
   gem 'rails_12factor'
 end
+
+# Bootstrap
+gem 'bootstrap-sass'
+
+# FlatUI
+gem 'flatui-rails', github: 'pkurek/flatui-rails'
+
+# http://decentexposure.info/
+gem 'decent_exposure'
 
 # To generate fake data
 gem 'faker'

@@ -25,6 +25,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   validates :title, presence: true
   validates :description, presence: true
+  #validates :accepted, presence: true
   # For Paperclip pictures
   has_attached_file :picture,
     :styles => { :default => "610x>", :thumb => "100x100>" },
@@ -38,4 +39,9 @@ class Post < ActiveRecord::Base
   # For friendly
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
+
+  # Methods
+  def accepted!
+    post.accepted = true 
+  end
 end

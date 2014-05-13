@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
-  before_action :authenticate_admin!
-  before_action :set_post, only: [:show, :edit, :destroy]
+  before_filter :authenticate_admin!, only: [:mark_accepted]
+  before_filter :require_permission, only: [:edit, :update, :destroy]
+  expose(:posts) { Post.find_by_accepted(true) }
+  expose(:post, params: :post_params)
+  expose(:waiting_posts) { Post.find_by_accepted(false) }
   def index
-    @posts = Post.all
   end
 
   def edit
@@ -12,38 +14,50 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
   end
 
   def destroy
-    @post.picture = nil
-    @post.save.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
+    post.picture = nil
+    post.save.destroy
+    redirect_to :index
+  end
+
+  def update
+    if post.save
+      render :index
+    else
+      render :new
     end
   end
 
   def create
-    @post = Post.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    post.user = current_user
+    post.accepted = false
+    if post.save
+       redirect_to post, notice: 'Post was successfully created.'
+    else
+       render :new
     end
   end
- private
 
-  def set_post
-    @post = Post.find(params[:id])
+  def waiting_room
+    self.posts = waiting_posts
+    render :index
+  end
+
+  def mark_accepted
+    post.accepted!
+    redirect_to post, notice: 'Post accepted.'
+  end
+
+ private
+  def require_permission
+    return if current_user.owner? post
+    redirect_to :index
   end
 
   def post_params
+    return if %w{mark_accepted}.include? action_name
     params.require(:post).permit(:title, :description, :picture)
   end
 end
