@@ -1,17 +1,14 @@
 .row
   .edit-user
+    = devise_error_messages!
     %h2
       Edit #{resource_name.to_s.humanize}
-    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-vertical' }) do |f|
-      = f.error_notification
-      = display_base_errors resource
-      = f.input :name, autofocus: true
-      = f.input :nickname
-      = f.input :email, required: true
-      = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-      = f.input :password_confirmation, required: false
-      = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
-      = f.button :submit, 'Update', class: 'btn-primary'
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-signin', role: 'form' }) do |f|
+      = f.text_field :email,class: 'form-control',placeholder: "Email address", required: true
+      = f.password_field :password, autocomplete: "off",class: 'form-control' , placeholder: "Password", required: false
+      = f.password_field :password_confirmation,class: 'form-control', placeholder: "Confirm password", required: false
+      = f.password_field :current_password, class: 'form-control' , placeholder: "Password", required: true
+      = f.submit "Update", class: 'btn btn-lg btn-primary btn-block'
     %h3 Cancel my account
     %p
       Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}.
