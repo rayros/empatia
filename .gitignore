@@ -20,3 +20,5 @@
 *.swp
 /test/fixtures/fake.jpg
 /test/fixtures/sample.jpg
+/public/sitemap.xml
+/spec/support/sample-one.jpg
