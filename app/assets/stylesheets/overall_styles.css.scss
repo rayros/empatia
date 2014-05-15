@@ -1,0 +1,28 @@
+body {
+  background: #f5f5f5;
+  .content-container {
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+    background: #fff;
+    padding: 10px;
+  }
+}
+
+.sign-in, .sign-up, .edit-user {
+  width: 210px;
+  margin: 0 auto;
+  margin-bottom: 10px
+}
+
+[class*="span"]{
+  box-sizing: border-box;
+}
+
+.checkbox-container {
+  @extend .span3;
+  @extend .clearfix;
+  .control-label {
+    float: left;
+    margin-left: 30px
+  }
+}

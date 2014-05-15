@@ -1,0 +1,9 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin', role: 'form' }) do |f|
+  %h2.form-signin-heading= "Please sign in"
+  = f.text_field :email, class: 'form-control',  autofocus: true, placeholder: "Email address", required: true
+  = f.password_field :password, class: 'form-control', placeholder: "Password", required: true
+  %label.checkbox
+    = f.check_box :remember_me, as: :boolean if devise_mapping.rememberable?
+    = "Remember me"
+  = f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block'
+= render "devise/shared/links"

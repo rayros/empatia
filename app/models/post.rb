@@ -42,6 +42,10 @@ class Post < ActiveRecord::Base
 
   # Methods
   def accepted!
-    post.accepted = true 
+    update_attribute(:accepted, true)
+  end
+
+  def not_accepted!
+    update_attribute(:accepted, false)
   end
 end

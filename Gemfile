@@ -10,6 +10,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Better errors
   gem "better_errors"
+  gem "binding_of_caller"
   # Annotate
   # Tableki w bd dla modelu na górze
   gem 'annotate'
@@ -23,6 +24,7 @@ group :development, :test do
   gem "rails_best_practices"
   gem 'railroady'
 end
+
 gem 'simplecov', :require => false, :group => :test
 group :production do
   # Use postgresql as the database for Active Record
@@ -32,11 +34,17 @@ group :production do
   gem 'rails_12factor'
 end
 
+# social-buttons
+gem 'social-buttons'
+
+# will_paginate
+gem 'will_paginate-bootstrap'
+
 # Bootstrap
 gem 'bootstrap-sass'
-
+gem 'bootstrap-filestyle-rails', github: 'rayros/bootstrap-filestyle-rails'
 # FlatUI
-gem 'flatui-rails', github: 'pkurek/flatui-rails'
+#gem 'flatui-rails', github: 'pkurek/flatui-rails'
 
 # http://decentexposure.info/
 gem 'decent_exposure'
@@ -66,8 +74,7 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'rails', '4.0.4'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
-
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

@@ -1,6 +1,6 @@
 require 'factory_girl'
   def sample_file(filename = "sample-one.jpg")
-    File.new("test/fixtures/#{filename}")
+    File.new("spec/support/#{filename}")
   end
 FactoryGirl.define do
   factory :post do

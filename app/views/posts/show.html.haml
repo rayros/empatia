@@ -1,15 +1,14 @@
+#fb-root
+:javascript
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&appId=#{ENV['FB_APP_ID']}&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+%h2= post.title
+= image_tag post.picture.url(:default), alt: post.description, class: 'img-responsive center-block'
 
-
-%p
-  %b Title:
-  = @post.title
-%p
-  %b Description:
-  = @post.description
-%p
-  %b Picture:
-  = image_tag @post.picture.url(:default), alt: @post.description
-
-= link_to 'Edit', edit_post_path(@post)
-\|
-= link_to 'Back', posts_path
+.comments
+  .fb-comments{'data-href'=> post_url}

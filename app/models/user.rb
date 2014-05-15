@@ -31,4 +31,10 @@ class User < ActiveRecord::Base
   def owner? post 
     posts.include? post
   end
+  def count_accepted
+    posts.where(accepted: true).count
+  end
+  def count_waiting
+    posts.where(accepted: false).count
+  end
 end
