@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :destroy]
+  before_filter :authenticate_admin!, only: [:mark_accepted, :mark_not_accepted]
+  before_filter :require_permission, only: [:edit, :update, :destroy]
+  expose(:post, finder: :find_by_slug, attributes: :post_params)
+  expose(:accepted_posts) { Post.where(accepted: true).paginate(page: params[:page]).order('created_at DESC') }
+  expose(:waiting_posts) { Post.where(accepted: false).paginate(page: params[:page]) }
   def index
-    @posts = Post.all
   end
 
   def edit
@@ -11,39 +14,55 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
   end
-  
+
   def destroy
-    @post.picture = nil
-    @post.save
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
+    post.picture = nil
+    post.save
+    post.destroy
+    redirect_to posts_path
+  end
+
+  def update
+    if post.save
+      render :index
+    else
+      render :new
     end
   end
 
   def create
-    @post = Post.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @post }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    post.user = current_user if user_signed_in?
+    post.accepted = false
+    if post.save
+       redirect_to post, notice: 'Post was successfully created.'
+    else
+       render :new
     end
   end
- private
 
-  def set_post
-    @post = Post.find(params[:id])
+  def waiting_room
+  end
+
+  def mark_accepted
+    post.accepted!
+    redirect_to post, notice: 'Post accepted.'
+  end
+
+  def mark_not_accepted
+    post.not_accepted!
+    redirect_to post, notice: 'Post not accepted.'
+  end
+
+  private
+  def require_permission
+    return if admin_signed_in? 
+    return if current_user and current_user.owner? post
+    redirect_to root_path
   end
 
   def post_params
+    return if %w{mark_accepted mark_not_accepted}.include? action_name
     params.require(:post).permit(:title, :description, :picture)
   end
 end

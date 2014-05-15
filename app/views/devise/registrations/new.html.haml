@@ -1,0 +1,8 @@
+= devise_error_messages!
+= form_for(resource, :as => resource_name, url: registration_path(resource_name), html: {class: 'form-signin', role: 'form' }) do |f|
+  %h2.form-signup-heading= "Please sign up"
+  = f.text_field :email,class: 'form-control',placeholder: "Email address", required: true
+  = f.password_field :password,class: 'form-control' , placeholder: "Password", required: true
+  = f.password_field :password_confirmation,class: 'form-control', placeholder: "Confirm password", required: true
+  = f.submit "Sign up", class: 'btn btn-lg btn-primary btn-block'
+= render "devise/shared/links"

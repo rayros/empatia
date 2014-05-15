@@ -3,8 +3,12 @@ SitemapGenerator::Sitemap.default_host = "http://www.example.com"
 
 SitemapGenerator::Sitemap.create(:compress => false) do
   add posts_path, :priority => 0.7, :changefreq => 'daily'
+  add waiting_room_posts_path, :priority => 0.7, :changefreq => 'daily'
   Post.find_each do |post|
     add post_path(post), :lastmod => post.updated_at
+  end
+  User.find_each do |user|
+    add user_path(user), :lastmod => user.updated_at
   end
   # Put links creation logic here.
   #

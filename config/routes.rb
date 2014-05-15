@@ -1,26 +1,21 @@
 Kwejk::Application.routes.draw do
-  resource :password, only: [:edit, :update], path: '/haslo/', path_names: { edit: 'zmien' } 
-  #resource :session, only: [:new, :create, :destroy ]
-  match '/rejestracja', to: 'users#new', via: 'get'
-  match '/logowanie', to: 'session#new', via: 'get'
-  match '/wylogowanie', to: 'session#destroy', via: 'delete'
-  resource :user,
-    only: [:edit, :show, :update, :destroy ],
-    path: '/moje/',
-    path_names: { edit: 'edytuj' } do
-    resources :posts,
-      path: '/obrazek/',
-      only: [:show, :destroy, :edit, :update ] 
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :admins, :skip => [:registrations, :passwords] 
+  as :admin do
+    get '' => 'posts#index', :as => :new_admin_registration
+    get '' =>'posts#index', :as => :new_admin_password
   end
-  resources :users, path: '/uzytkownik/', only: [:show] do
-    resources :posts,
-    path: '/obrazek/',
-    only: [:show]
-  end
-  #resources :posts, path: '/obrazki/'
-  #resources :users
   root 'posts#index'
-  
+  resources :users, only: [:index, :show, :destroy]
+  resources :posts do
+    member do
+      get 'mark_accepted'
+      get 'mark_not_accepted'
+    end
+    collection do
+      get 'waiting_room'
+    end
+  end
   #get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

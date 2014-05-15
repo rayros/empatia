@@ -1,0 +1,22 @@
+%li
+  = link_to 'Add post', new_post_path
+%li
+  = link_to waiting_room_posts_path do
+    Waiting room 
+    %span.badge= waiting_count
+- if user_signed_in?
+  %li
+    = link_to 'My posts', user_path(current_user)
+  %li
+    = link_to 'Edit account', edit_user_registration_path
+  %li.logout-button
+    = link_to 'Logout', destroy_user_session_path, method: 'delete', class: 'pull-right'
+- unless admin_signed_in? or user_signed_in?
+  %li.login-button
+    = link_to 'Login', new_user_session_path
+- if admin_signed_in?
+  %li
+    = link_to 'Users', users_path 
+  %li.logout-button
+    = link_to 'Logout', destroy_admin_session_path, method: 'delete', class: 'pull-right'
+

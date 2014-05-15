@@ -14,3 +14,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/coverage
+/public/posts
+/doc
+*.swp
+/test/fixtures/fake.jpg
+/test/fixtures/sample.jpg
+/public/sitemap.xml
+/spec/support/sample-one.jpg

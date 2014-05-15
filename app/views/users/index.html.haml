@@ -1,21 +1,14 @@
-%h1 Listing users
-
-%table
-  %tr
-    %th Name
-    %th Admin
-    %th
-    %th
-    %th
-
-  - @users.each do |user|
+- users.each do |user|
+  %table.table.table-striped
     %tr
-      %td= user.name
-      %td= user.admin
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New User', new_user_path
+      %th="Email"
+      %th="Accepted"
+      %th="Waiting"
+      %th="Delete"
+    %tr
+      %td=link_to user.email, user_path(user)
+      %td=user.count_accepted
+      %td=user.count_waiting
+      %td=link_to 'Delete', user, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'
+.paginate
+  = will_paginate users, renderer: BootstrapPagination::Rails
