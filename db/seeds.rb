@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-#
+#O
 suckr = ImageSuckr::GoogleSuckr.new
 #Post.destroy_all
 10.times do |n|
