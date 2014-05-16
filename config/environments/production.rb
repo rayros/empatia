@@ -10,7 +10,9 @@ Kwejk::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     },
     :s3_permissions => :private,
-    :url => ":s3_eu_url" 
+    :s3_protocol => 'https',
+    :s3_host_name => 's3-eu-west-1.amazonaws.com'
+    :url => ":s3_domain_url" 
   }
   # Settings specified here will take precedence over those in config/application.rb.
 
