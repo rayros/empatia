@@ -1,4 +1,7 @@
 Kwejk::Application.configure do
+  config.paperclip_defaults = {
+    :url => "/:class/:id/:style/:basename.:extension"
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

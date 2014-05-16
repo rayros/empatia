@@ -13,7 +13,7 @@ Kwejk::Application.configure do
     :s3_protocol => 'https',
     :s3_host_name => 's3-eu-west-1.amazonaws.com',
     :url => ":s3_domain_url",
-    :path => "/:class/:attachment/:id_partition/:style/:filename" 
+    :path => ":class/:id/:style/:basename.:extension" 
   }
   # Settings specified here will take precedence over those in config/application.rb.
 
