@@ -1,3 +1,7 @@
+require "aws/s3"
+
+AWS::S3::DEFAULT_HOST.replace "s3-eu-west-1.amazonaws.com"
+
 Kwejk::Application.configure do
   # Paperclip config to amazon s3
   config.paperclip_defaults = {
@@ -6,8 +10,7 @@ Kwejk::Application.configure do
       :bucket => ENV['S3_BUCKET_NAME'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    },
-    :url => ":s3_eu_url"
+    }
   }
   # Settings specified here will take precedence over those in config/application.rb.
 
