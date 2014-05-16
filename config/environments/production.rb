@@ -11,7 +11,7 @@ Kwejk::Application.configure do
     },
     :s3_permissions => :private,
     :s3_protocol => 'https',
-    :s3_host_name => 's3-eu-west-1.amazonaws.com'
+    :s3_host_name => 's3-eu-west-1.amazonaws.com',
     :url => ":s3_domain_url" 
   }
   # Settings specified here will take precedence over those in config/application.rb.
