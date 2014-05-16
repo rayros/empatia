@@ -27,8 +27,7 @@ class Post < ActiveRecord::Base
   validates :description, presence: true
   #validates :accepted, presence: true
   # For Paperclip pictures
-  has_attached_file :picture,
-    :styles => { :default => "610x>", :thumb => "100x100>" },
+  has_attached_file :picture, :styles => { :default => "610x>", :thumb => "100x100>" }
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
   validates_attachment :picture,
     :presence => true,
