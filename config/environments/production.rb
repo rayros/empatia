@@ -9,7 +9,7 @@ Kwejk::Application.configure do
       :access_key_id => 'AKIAJI3JTX5C5UJK6BJQ',
       :secret_access_key => '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'
     },
-    :s3_permissions => :private,
+    :s3_permissions => :public_read,
     :s3_protocol => 'https',
     :s3_host_name => 's3-eu-west-1.amazonaws.com',
     :url => ":s3_domain_url",
