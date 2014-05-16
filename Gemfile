@@ -67,6 +67,9 @@ gem 'friendly_id', '~> 5.0.0'
 # HAML
 gem "haml-rails"
 
+# AWS S3 AMAZON
+gem 'aws-sdk'
+
 # Paperclip
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
