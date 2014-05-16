@@ -1,5 +1,0 @@
-== README
-
-TO CHANGE:
-ENV['FB_APP_ID'] - your facebook app id
-
