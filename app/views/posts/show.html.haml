@@ -10,8 +10,21 @@
     js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&appId=#{ENV['FB_APP_ID']}&version=v2.0";
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-  %h2= post.title
-  = image_tag post.picture.url(:default), alt: post.description, class: 'img-responsive center-block'
-
-  .comments
-    .fb-comments{'data-href'=> post_url}
+  .post
+    %h2= post.title
+    = image_tag post.picture.url(:default), alt: post.description, class: 'img-responsive center-block post'
+    - if user_signed_in? and current_user.owner? post
+      .btn-group.btn-group-justified
+        = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
+        = link_to 'Delete', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+    - if admin_signed_in?
+      .btn-group.btn-group-justified
+        - if post.accepted == false
+          = link_to 'Accept', mark_accepted_post_path(post), class: 'btn btn-primary'
+        - else
+          = link_to 'Remove accept!', mark_not_accepted_post_path(post), class: 'btn btn-danger'
+        = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
+        = link_to 'Delete', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+    = like_button(ENV['FB_APP_ID'], href: post_url(post), share: true)
+    .comments
+      .fb-comments{'data-href'=> post_url}
