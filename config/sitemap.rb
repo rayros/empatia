@@ -8,7 +8,7 @@ SitemapGenerator::Sitemap.create(:compress => false) do
     add post_path(post), :lastmod => post.updated_at
   end
   User.find_each do |user|
-    add user_path(user), :lastmod => user.updated_at
+    add user_path(user), :lastmod => user.posts.last.updated_at
   end
   # Put links creation logic here.
   #
