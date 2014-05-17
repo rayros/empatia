@@ -3,3 +3,4 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 User-agent: *
 Disallow: /admins/
+Sitemap: https://s3-eu-west-1.amazonaws.com/memes-demo/sitemaps/sitemap.xml
