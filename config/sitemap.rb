@@ -1,6 +1,6 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = ENV['HOST_NAME']
-SitemapGenerator::Sitemap.public_path = 'tmp/'
+SitemapGenerator::Sitemap.public_path = '/public/'
 
 SitemapGenerator::Sitemap.create(:compress => false) do
   add posts_path, :priority => 0.7, :changefreq => 'daily'
