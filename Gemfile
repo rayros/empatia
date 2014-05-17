@@ -58,6 +58,8 @@ gem 'image_suckr', github: 'rayros/image_suckr'
 # Devise
 gem 'devise'
 
+# Fog to send sitemap.xml to amazon s3
+gem 'fog'
 # Sitemap generator
 gem 'sitemap_generator'
 
