@@ -10,7 +10,9 @@
 body {
   padding-top: 50px;
 }
-
+.navbar-btn {
+  margin-left: 10px;
+}
 
 /*
  * Global add-ons

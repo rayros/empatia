@@ -1,5 +1,6 @@
 %li
-  = link_to 'Add post', new_post_path
+  %form{action: new_post_path }
+    %button.btn.btn-success.navbar-btn="Add post!"
 %li
   = link_to waiting_room_posts_path do
     Waiting room 
