@@ -4,7 +4,7 @@ Kwejk::Application.configure do
   # Paperclip config to amazon s3
   config.paperclip_defaults = {
     :storage => :s3,
-    :bucket => ENV['S3_BUCKET_NAME'],#'memes-demo',
+    :bucket => ENV['FOG_DIRECTORY'],#'memes-demo',
     :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],#'AKIAJI3JTX5C5UJK6BJQ',
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],#'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'
