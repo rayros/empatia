@@ -19,4 +19,4 @@ HOW TO CREATE ADMIN?
 DEMO:
 -----
 
-http://cryptic-thicket-5969.herokuapp.com/
+http://empatia.herokuapp.com/
