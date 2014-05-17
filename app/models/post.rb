@@ -45,4 +45,7 @@ class Post < ActiveRecord::Base
   def not_accepted!
     update_attribute(:accepted, false)
   end
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
 end
