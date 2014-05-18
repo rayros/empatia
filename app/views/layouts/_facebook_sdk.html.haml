@@ -1,4 +1,3 @@
-- url = params[:id] ? post_url(post) : ' '
 #fb-root
 :javascript
   window.fbAsyncInit = function() {
@@ -7,8 +6,9 @@
       xfbml      : true,
       version    : 'v2.0'
     });
-    var fb_like = function(url, html_element) {
-      var get = $.get(url+'/fb_update', function(data){
+    
+    var get = function(url) {
+      $.get(url+'/fb_update', function(data){
         if(data && data.response){
           console.log(data.responseText);
         } else {
@@ -16,13 +16,18 @@
         }
       });    
     }
+    
+    var fb_like = function(url, html_element) {
+      get(url);
+    }
+    
     FB.Event.subscribe('edge.create', fb_like);
     FB.Event.subscribe('edge.remove', fb_like);
+    
     var fb_comment = function(response) {
-        console.log("a");
-        console.log(response);
-        $.get('#{url}/fb_update');
+      get(response.href);
     }
+
     FB.Event.subscribe('comment.create', fb_comment);
     FB.Event.subscribe('comment.remove', fb_comment);
   };
