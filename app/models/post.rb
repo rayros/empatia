@@ -31,7 +31,7 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
   validates_attachment :picture,
     :presence => true,
-    :size => { :in => 0..2000.kilobytes }
+    :size => { :in => 0..10.megabytes }
 
   # For friendly
   extend FriendlyId
