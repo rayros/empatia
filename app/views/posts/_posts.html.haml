@@ -2,12 +2,12 @@
   = render 'posts/empty'
 .col-md-8.col-md-offset-2
   - posts.each do |post|
-    .post
-      %h3
+    .post{itemscope: true, itemtype: 'http://schema.org/ImageObject'}
+      %h2{itemprop: 'name'}
         = post.title
         -if user_signed_in? and current_user.owner? post and post.accepted == false
           %span{class: 'label label-warning pull-right'}= "Waiting to accepted"
-      = link_to( image_tag( post.picture.url(:default),class: 'img-responsive center-block', alt: post.description), post, class: 'center-block post-url')
+      = link_to( image_tag( post.picture.url(:default),class: 'img-responsive center-block', alt: post.description, itemprop: 'contentURL'), post, class: 'center-block post-url')
       - if user_signed_in? and current_user.owner? post
         .btn-group.btn-group-justified
           = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'

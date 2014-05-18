@@ -3,6 +3,8 @@
 - else
   - content_for :title do
     = post.title
+  - content_for :description do
+    = post.description
   #fb-root
   :javascript
     (function(d, s, id) {
@@ -12,9 +14,9 @@
     js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&appId=#{ENV['FB_APP_ID']}&version=v2.0";
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-  .post
-    %h2= post.title
-    = image_tag post.picture.url(:default), alt: post.description, class: 'img-responsive center-block post'
+  .post{itemscope: true, itemtype: 'http://schema.org/ImageObject'}
+    %h1{itemprop: 'name'}= post.title
+    = image_tag post.picture.url(:default), alt: post.description, class: 'img-responsive center-block post', itemprop: 'contentURL'
     - if user_signed_in? and current_user.owner? post
       .btn-group.btn-group-justified
         = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
