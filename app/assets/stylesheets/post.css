@@ -28,7 +28,7 @@
 .loader { 
   width: 100px; 
   height: 100px; 
-  background-image: url("sonic.png"); 
+  background-image: image-url("sonic.png"); 
   -webkit-animation: loaderSprite 1s steps(20, end) infinite; 
   -moz-animation: loaderSprite 1s steps(20, end) infinite; 
   animation: loaderSprite 1s steps(20, end) infinite; 
