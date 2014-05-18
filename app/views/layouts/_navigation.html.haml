@@ -1,4 +1,8 @@
 %li
+  = link_to 'Hotness', hotness_posts_path
+%li 
+  = link_to 'Top', top_posts_path
+%li
   %form{action: new_post_path }
     %button.btn.btn-success.navbar-btn="Add post!"
 %li

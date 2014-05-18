@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518194121) do
+ActiveRecord::Schema.define(version: 20140518221420) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20140518194121) do
     t.string   "slug"
     t.integer  "user_id"
     t.boolean  "accepted",             default: false, null: false
-    t.integer  "comment_count"
-    t.integer  "like_count"
-    t.integer  "share_count"
-    t.integer  "total_count"
+    t.integer  "comment_count",        default: 0,     null: false
+    t.integer  "like_count",           default: 0,     null: false
+    t.integer  "share_count",          default: 0,     null: false
+    t.integer  "total_count",          default: 0,     null: false
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true

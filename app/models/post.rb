@@ -49,6 +49,22 @@ class Post < ActiveRecord::Base
   def not_accepted!
     update_attribute(:accepted, false)
   end
+ 
+#  comment_count        :integer
+#  like_count           :integer
+#  share_count          :integer
+#  total_count          :integer
+  def hotness
+    x = 3 if created_at > 24.hours.ago
+    x = 2 if created_at.between?(72.hours.ago, 24.hours.ago)
+    x = 1 if created_at.between?(7.days.ago, 3.days.ago)
+    x = 0 if created_at < 7.days.ago
+    x += 1 if comment_count > 3
+    x += 1 if like_count > 5
+    x += 1 if share_count > 1
+    x += 1 if total_count > 10
+    x
+  end
 
   def should_generate_new_friendly_id?
     title_changed?

@@ -8,6 +8,8 @@ SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.create(:compress => false) do
   add posts_path, :priority => 0.7, :changefreq => 'daily'
   add waiting_room_posts_path, :priority => 0.7, :changefreq => 'daily'
+  add top_posts_path, :priority => 0.7, :changefreq => 'weekly'
+  add hotness_posts_path, :priority => 0.7, :changefreq => 'daily'
   Post.find_each do |post|
     add post_path(post), :lastmod => post.updated_at
   end

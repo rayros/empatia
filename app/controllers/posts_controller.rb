@@ -2,9 +2,20 @@ class PostsController < ApplicationController
   before_filter :authenticate_admin!, only: [:mark_accepted, :mark_not_accepted]
   before_filter :require_permission, only: [:edit, :update, :destroy]
   expose(:post, finder: :find_by_slug, attributes: :post_params)
-  expose(:accepted_posts) { Post.where(accepted: true).paginate(page: params[:page]).order('created_at DESC') }
+  expose(:accepted_posts) { Post.where(accepted: true).paginate(page: params[:page]).order('created_at DESC')}
   expose(:waiting_posts) { Post.where(accepted: false).paginate(page: params[:page]) }
+  expose(:hotness_posts) { accepted_posts.sort_by(&:hotness).reverse }
+  expose(:top_posts) { Post.where(accepted: true).paginate(page: params[:page]).order('total_count DESC, created_at DESC') }
   def index
+  end
+
+  def waiting_room
+  end
+  
+  def hotness
+  end
+ 
+  def top
   end
 
   def edit
@@ -48,8 +59,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def waiting_room
-  end
 
   def mark_accepted
     post.accepted!

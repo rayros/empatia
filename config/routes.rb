@@ -15,6 +15,8 @@ Kwejk::Application.routes.draw do
     end
     collection do
       get 'waiting_room'
+      get 'hotness'
+      get 'top'
     end
   end
   #get "welcome/index"
