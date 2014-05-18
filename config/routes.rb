@@ -11,6 +11,7 @@ Kwejk::Application.routes.draw do
     member do
       get 'mark_accepted'
       get 'mark_not_accepted'
+      get 'fb_update'
     end
     collection do
       get 'waiting_room'

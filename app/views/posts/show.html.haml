@@ -5,15 +5,6 @@
     = post.title
   - content_for :description do
     = post.description
-  #fb-root
-  :javascript
-    (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&appId=#{ENV['FB_APP_ID']}&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
   .post{itemscope: true, itemtype: 'http://schema.org/ImageObject'}
     %h1{itemprop: 'name'}= post.title
     = image_tag post.picture.url(:default), alt: post.description, class: 'img-responsive center-block post', itemprop: 'contentURL'
@@ -29,6 +20,6 @@
           = link_to 'Remove accept!', mark_not_accepted_post_path(post), class: 'btn btn-danger'
         = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
         = link_to 'Delete', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
-    = like_button(ENV['FB_APP_ID'], href: post_url(post), share: true)
+    .fb-like{'data-href' => post_url, 'data-layout'=>'button_count', 'data-action'=>'like', 'data-share' => 'true'}
     .comments
-      .fb-comments{'data-href'=> post_url}
+      .fb-comments{'data-href'=> post_url, 'data-numposts'=>'5', 'data-colorscheme' => 'light'}

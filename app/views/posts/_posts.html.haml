@@ -20,6 +20,6 @@
             = link_to 'Remove accept!', mark_not_accepted_post_path(post), class: 'btn btn-danger'
           = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
           = link_to 'Delete', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
-      = like_button(ENV['FB_APP_ID'], href: post_url(post), share: true)
+      .fb-like{'data-href' => post_url(post), 'data-layout'=>'button_count', 'data-action'=>'like', 'data-share' => 'true'}
   .paginate
     = will_paginate posts,:page_links => false , renderer: BootstrapPagination::Rails

@@ -16,6 +16,7 @@
       ga('send', 'pageview');
     = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
+    = render 'layouts/facebook_sdk'
     .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container-fluid
         .navbar-header
