@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require bootstrap-filestyle
 //= require_tree .
+
 $(":file").filestyle({
   buttonName: "btn-primary"
-})
+});
