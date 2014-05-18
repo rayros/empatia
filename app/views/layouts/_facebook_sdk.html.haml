@@ -6,7 +6,7 @@
       xfbml      : true,
       version    : 'v2.0'
     });
-    var fb_update = function(url, html_element) {
+    var fb_like = function(url, html_element) {
       var get = $.get(url+'/fb_update', function(data){
         if(data && data.response){
           console.log(data.responseText);
@@ -16,11 +16,17 @@
       });    
     }
 
-    FB.Event.subscribe('edge.create', fb_update);
-    FB.Event.subscribe('edge.remove', fb_update);
+    var fb_comment = function(response) {
+      console.log("a");
+      console.log(response);
+      $.get('#{post_url(post)}/fb_update');
+    }
 
-    FB.Event.subscribe('comment.create', fb_update);
-    FB.Event.subscribe('comment.remove', fb_update);
+    FB.Event.subscribe('edge.create', fb_like);
+    FB.Event.subscribe('edge.remove', fb_like);
+
+    FB.Event.subscribe('comment.create', fb_comment);
+    FB.Event.subscribe('comment.remove', fb_comment);
 
   };
 
