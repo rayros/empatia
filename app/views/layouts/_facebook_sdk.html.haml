@@ -1,3 +1,4 @@
+- url = params[:id] ? post_url(post) : ' '
 #fb-root
 :javascript
   window.fbAsyncInit = function() {
@@ -15,19 +16,15 @@
         }
       });    
     }
-
-    var fb_comment = function(response) {
-      console.log("a");
-      console.log(response);
-      $.get('#{post_url(post)}/fb_update');
-    }
-
     FB.Event.subscribe('edge.create', fb_like);
     FB.Event.subscribe('edge.remove', fb_like);
-
+    var fb_comment = function(response) {
+        console.log("a");
+        console.log(response);
+        $.get('#{url}/fb_update');
+    }
     FB.Event.subscribe('comment.create', fb_comment);
     FB.Event.subscribe('comment.remove', fb_comment);
-
   };
 
   (function(d, s, id){
