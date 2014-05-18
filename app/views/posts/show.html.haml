@@ -1,6 +1,8 @@
 - if post.nil?
   = render 'posts/empty'
 - else
+  - content_for :title do
+    = post.title
   #fb-root
   :javascript
     (function(d, s, id) {
