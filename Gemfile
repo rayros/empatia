@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 group :development, :test do
 
+  # To get random images
+  gem 'image_suckr', github: 'rayros/image_suckr'
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   # Rspec
@@ -51,9 +54,6 @@ gem 'decent_exposure'
 
 # To generate fake data
 gem 'faker'
-
-# To get random images
-gem 'image_suckr', github: 'rayros/image_suckr'
 
 # Devise
 gem 'devise'
