@@ -6,15 +6,22 @@
       xfbml      : true,
       version    : 'v2.0'
     });
-    var page_like_or_unlike_callback = function(url, html_element) {
-    //  console.log("page_like_or_unlike_callback");
-    //  console.log(url);
-    //  console.log(html_element);
+    var fb_update = function(url, html_element) {
+      var get = $.get(url+'/fb_update', function(data){
+        if(data && data.response){
+          console.log(data.responseText);
+        } else {
+          console.log(data);
+        }
+      });    
     }
 
-    // In your onload handler
-    FB.Event.subscribe('edge.create', page_like_or_unlike_callback);
-    FB.Event.subscribe('edge.remove', page_like_or_unlike_callback);
+    FB.Event.subscribe('edge.create', fb_update);
+    FB.Event.subscribe('edge.remove', fb_update);
+
+    FB.Event.subscribe('comment.create', fb_update);
+    FB.Event.subscribe('comment.remove', fb_update);
+
   };
 
   (function(d, s, id){

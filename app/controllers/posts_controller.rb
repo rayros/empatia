@@ -31,6 +31,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def fb_update
+    fql = Fql.execute("select comment_count, like_count, share_count, total_count 
+                        from link_stat where url = '#{post_url(post)}'")
+    post.update!(fql.first)
+    render json: post
+  end
+  
   def create
     post.user = current_user if user_signed_in?
     post.accepted = false

@@ -14,6 +14,10 @@
 #  slug                 :string(255)
 #  user_id              :integer
 #  accepted             :boolean          default(FALSE), not null
+#  comment_count        :integer
+#  like_count           :integer
+#  share_count          :integer
+#  total_count          :integer
 #
 # Indexes
 #
@@ -45,6 +49,7 @@ class Post < ActiveRecord::Base
   def not_accepted!
     update_attribute(:accepted, false)
   end
+
   def should_generate_new_friendly_id?
     title_changed?
   end

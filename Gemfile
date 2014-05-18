@@ -36,8 +36,8 @@ group :production do
   # Heroku gem
   gem 'rails_12factor'
 end
-
-
+# Facebook query language
+gem 'fql'
 # will_paginate
 gem 'will_paginate-bootstrap'
 
