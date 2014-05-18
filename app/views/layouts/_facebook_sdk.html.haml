@@ -1,0 +1,26 @@
+#fb-root
+:javascript
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '#{ENV['FB_APP_ID']}',
+      xfbml      : true,
+      version    : 'v2.0'
+    });
+    var page_like_or_unlike_callback = function(url, html_element) {
+    //  console.log("page_like_or_unlike_callback");
+    //  console.log(url);
+    //  console.log(html_element);
+    }
+
+    // In your onload handler
+    FB.Event.subscribe('edge.create', page_like_or_unlike_callback);
+    FB.Event.subscribe('edge.remove', page_like_or_unlike_callback);
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));

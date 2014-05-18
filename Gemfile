@@ -37,8 +37,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-# social-buttons
-gem 'social-buttons'
 
 # will_paginate
 gem 'will_paginate-bootstrap'
