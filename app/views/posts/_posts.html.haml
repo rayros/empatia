@@ -23,4 +23,4 @@
           = link_to 'Delete', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
       .fb-like{'data-href' => post_url(post), 'data-layout'=>'button_count', 'data-action'=>'like', 'data-share' => 'true'}
   .paginate
-    = will_paginate paginate,:page_links => false , renderer: BootstrapPagination::Rails
+    = will_paginate posts,:page_links => false , renderer: BootstrapPagination::Rails
