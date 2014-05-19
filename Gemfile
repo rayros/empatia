@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby "2.0.0"
 group :development, :test do
+  # foreman start
+  gem 'foreman'
 
   # To get random images
   gem 'image_suckr', github: 'rayros/image_suckr'
