@@ -10,7 +10,7 @@ TO CHANGE:
   * ENV['AWS_ACCESS_KEY_ID'] - your amazon aws access key id.
   * ENV['AWS_SECRET_ACCESS_KEY'] - your amazon aws secret access key.
   * ENV['HOST_NAME'] - host name (http://example.com/)
-
+  * ENV['WEB_CONCURRENCY'] - numer of workers in unicorn
 HOW TO CREATE ADMIN?
 ----------------
   
