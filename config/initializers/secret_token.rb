@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Kwejk::Application.config.secret_key_base = 'b69665a96d248f9ff1fb17bfb2052c63e68d1bee0f6e4a837e47fcde5eb8ff41ca6f50ee47ef768dadae7728c2579e974993fef264ecb25ffebf2e8972f9cc4b'
+Kwejk::Application.config.secret_key_base = ENV['SECRET_TOKEN']
