@@ -11,6 +11,10 @@ TO CHANGE:
   * ENV['AWS_SECRET_ACCESS_KEY'] - your amazon aws secret access key.
   * ENV['HOST_NAME'] - host name (http://example.com/)
   * ENV['WEB_CONCURRENCY'] - numer of workers in unicorn
+  * ENV['SECRET_TOKEN'] - your secret key
+  * ENV['DEVISE_SECRET_KEY'] - your devise sercet key
+
+
 HOW TO CREATE ADMIN?
 ----------------
   
