@@ -41,6 +41,11 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
+  # Scopes
+  scope :accepted, -> { where(accepted: true).order('created_at DESC') }
+  scope :waiting, -> { where(accepted: false) }
+  scope :hot, -> { where(accepted: true).sort_by(&:hotness).reverse }
+  scope :top, -> { where(accepted: true).order('total_count DESC, created_at DESC') }
   # Methods
   def accepted!
     update_attribute(:accepted, true)
