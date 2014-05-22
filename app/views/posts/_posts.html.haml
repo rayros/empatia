@@ -7,6 +7,8 @@
         = post.title
         -if user_signed_in? and current_user.owner? post and post.accepted == false
           %span{class: 'label label-warning pull-right'}= "Waiting to accepted"
+        -if admin_signed_in? and post.accepted == false
+          %span{class: 'label label-warning pull-right'}= "Waiting to accepted"
       = link_to( image_tag( post.picture.url(:default),class: 'img-responsive center-block', alt: post.description, itemprop: 'contentURL'), post, class: 'center-block post-url')
       - if user_signed_in? and current_user.owner? post
         .btn-group.btn-group-justified
