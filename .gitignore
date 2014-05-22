@@ -23,3 +23,4 @@
 /public/sitemap.xml
 /spec/support/sample-one.jpg
 .env
+public/system/
