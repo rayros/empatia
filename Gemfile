@@ -9,6 +9,8 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  # Guard rspec
+  gem 'guard-rspec', require: false
   # Rspec
   gem 'rspec-rails'
   # Factory girl

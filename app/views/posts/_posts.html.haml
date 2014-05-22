@@ -5,21 +5,16 @@
     .post{itemscope: true, itemtype: 'http://schema.org/ImageObject'}
       %h2{itemprop: 'name'}
         = post.title
-        -if user_signed_in? and current_user.owner? post and post.accepted == false
-          %span{class: 'label label-warning pull-right'}= "Waiting to accepted"
-        -if admin_signed_in? and post.accepted == false
+        -if waiting? post 
           %span{class: 'label label-warning pull-right'}= "Waiting to accepted"
       = link_to( image_tag( post.picture.url(:default),class: 'img-responsive center-block', alt: post.description, itemprop: 'contentURL'), post, class: 'center-block post-url')
-      - if user_signed_in? and current_user.owner? post
+      - if user_owner? post
         .btn-group.btn-group-justified
-          = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
-          = link_to 'Delete', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
-      - if admin_signed_in?
-        .btn-group.btn-group-justified
-          - if post.accepted == false
-            = link_to 'Accept', mark_accepted_post_path(post), class: 'btn btn-primary'
-          - else
-            = link_to 'Remove accept!', mark_not_accepted_post_path(post), class: 'btn btn-danger'
+          - if admin_signed_in?
+            - if waiting? post
+              = link_to 'Accept', mark_accepted_post_path(post), class: 'btn btn-primary'
+            - else
+              = link_to 'Remove accept!', mark_not_accepted_post_path(post), class: 'btn btn-danger'   
           = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
           = link_to 'Delete', post, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
       .fb-like{'data-href' => post_url(post), 'data-layout'=>'button_count', 'data-action'=>'like', 'data-share' => 'true'}
