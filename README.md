@@ -55,6 +55,13 @@ Migrate.
 foreman run rake db:migrate
 ```
 
+Create admin user.
+
+```
+foreman run rake db:add_admin
+```
+
+
 Run localhost server.
 
 ```
@@ -65,6 +72,12 @@ Open website.
 
 ```
 127.0.0.1:3000
+```
+
+Go to admin panel.
+
+```
+127.0.0.1:3000/users
 ```
 
 ### Run on heroku server
