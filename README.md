@@ -1,8 +1,7 @@
-README
-======
+# README
 
-TO CHANGE:
----------
+
+## TO CHANGE:
   
   * ENV['FB_APP_ID'] - your facebook app id.
   * ENV['FOG_DIRECTORY'] - your bucket in amazon S3.
@@ -15,14 +14,55 @@ TO CHANGE:
   * ENV['DEVISE_SECRET_KEY'] - your devise sercet key
 
 
-HOW TO CREATE ADMIN?
-----------------
+## HOW TO CREATE ADMIN?
   
   1. ENV['ADMIN_EMAIL'] - your admin email
   2. ENV['ADMIN_PASSWD'] - your admin password
   3. rake db:add_admin
 
-DEMO:
------
+## DEMO:
 
 http://empatia.herokuapp.com/
+
+## Start?
+
+### Installation
+
+```
+git clone https://github.com/rayros/kwejk.git
+cd kwejk
+bundle
+```
+
+### Development usage
+
+Create file `.env`
+
+``` touch .env ```
+
+Add to `.env` develop vars
+
+```
+SECRET_TOKEN=
+DEVISE_SECRET_KEY=
+ADMIN_EMAIL=
+ADMIN_PASSWD=
+```
+
+Migrate.
+
+```
+foreman run rake db:migrate
+```
+
+Run localhost serwer.
+
+```
+foreman start -f Procfile.dev
+```
+
+### Run on heroku server
+
+```
+git push heroku master
+```
