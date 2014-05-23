@@ -55,10 +55,16 @@ Migrate.
 foreman run rake db:migrate
 ```
 
-Run localhost serwer.
+Run localhost server.
 
 ```
 foreman start -f Procfile.dev
+```
+
+Open website.
+
+```
+127.0.0.1:3000
 ```
 
 ### Run on heroku server
