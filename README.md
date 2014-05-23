@@ -31,7 +31,7 @@ http://empatia.herokuapp.com/
 ```
 git clone https://github.com/rayros/kwejk.git
 cd kwejk
-bundle
+bundle --without production
 ```
 
 ### Development usage
