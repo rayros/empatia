@@ -8,31 +8,40 @@ class PostsController < ApplicationController
   expose(:waiting_posts) { Post.waiting.paginate(page: params[:page]) }
   expose(:hotness_posts) { Post.hot.paginate(page: params[:page]) }
   expose(:top_posts) { Post.top.paginate(page: params[:page])}
+
+  # GET /posts
   def index
-    respond_to do |format|
-      format.html 
-      format.xml          
-    end
+    index_render accepted_posts
   end
 
+  # GET /posts/waiting_room
   def waiting_room
-  end
-  
-  def hotness
+    index_render waiting_posts
   end
  
-  def top
+  # GET /posts/hotness 
+  def hotness
+    index_render hotness_posts
   end
 
+  # GET /posts/top 
+  def top
+    index_render top_posts
+  end
+
+  # GET /posts/(slug)/edit
   def edit
   end
 
+  # GET /posts/(slug)
   def show
   end
 
+  # GET /posts/new
   def new
   end
 
+  # DELETE /posts/(slug)
   def destroy
     post.picture = nil
     post.save
@@ -40,6 +49,7 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  # PUT /posts/(slug)
   def update
     if post.save
       render :index
@@ -48,13 +58,15 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /posts/(slug)/fb_update
   def fb_update
     fql = Fql.execute("select comment_count, like_count, share_count, total_count 
                         from link_stat where url = '#{post_url(post)}'")
     post.update!(fql.first)
     render json: post
   end
-  
+ 
+  # POST /posts 
   def create
     post.user = current_user if user_signed_in?
     post.accepted = false
@@ -65,12 +77,13 @@ class PostsController < ApplicationController
     end
   end
 
-
+  # GET /posts/(slug)/mark_accepted
   def mark_accepted
     post.accepted!
     redirect_to post, notice: 'Post accepted.'
   end
 
+  # GET /posts/(slug)/mark_not_accepted
   def mark_not_accepted
     post.not_accepted!
     redirect_to post, notice: 'Post not accepted.'
@@ -86,5 +99,12 @@ class PostsController < ApplicationController
   def post_params
     return if %w{mark_accepted mark_not_accepted}.include? action_name
     params.require(:post).permit(:title, :description, :picture)
+  end
+
+  def index_render posts
+    respond_to do |format|
+      format.html 
+      format.xml { render :index, locals: { posts: posts } }
+    end
   end
 end

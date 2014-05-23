@@ -1,6 +1,6 @@
 xml.instruct!
 xml.posts do
-  accepted_posts.each do |post|
+  posts.each do |post|
     xml.post do
       xml.id post.id
       xml.title post.title
