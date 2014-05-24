@@ -1,4 +1,5 @@
 xml.instruct!
+xml.instruct! 'xml-stylesheet', {:href => asset_url('index.xsl'), :type=>'text/xsl'}
 xml.posts do
   posts.each do |post|
     xml.post do
