@@ -6,6 +6,10 @@ xml.posts do
       xml.id post.id
       xml.title post.title
       xml.description post.description
+      xml.comment_count post.comment_count
+      xml.like_count post.like_count
+      xml.share_count post.share_count
+      xml.total_count post.total_count
       xml.img do
         xml.file do
           xml.name post.picture_file_name

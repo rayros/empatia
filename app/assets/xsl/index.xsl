@@ -18,6 +18,9 @@
                 Description:
               </th>
               <th align="center">
+                &#160;C&#160;/&#160;L&#160;/&#160;S&#160;/&#160;TOTAL&#160;
+              </th>
+              <th align="center">
                 Image:
               </th>
             </tr>
@@ -37,6 +40,9 @@
                 </td>
                 <td align="center" >
                   <xsl:value-of select="description"/>
+                </td>
+                <td align="center" >
+                  <xsl:value-of select="comment_count"/>&#160;/&#160;<xsl:value-of select="like_count"/>&#160;/&#160;<xsl:value-of select="share_count"/>&#160;/&#160;<xsl:value-of select="total_count"/>
                 </td>
                 <td align="center">
                   <img>
