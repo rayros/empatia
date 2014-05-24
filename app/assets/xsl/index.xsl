@@ -11,7 +11,7 @@
               <th align="center" width="100">
                 Id:
               </th>
-              <th align="center">
+              <th align="center" width="300">
                 Title:
               </th>
               <th align="center">
