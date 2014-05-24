@@ -17,6 +17,7 @@ xml.posts 'xmlns:xsi'=>'http://www.w3.org/2001/XMLSchema-instance', 'xsi:noNames
           xml.size post.picture_file_size
         end
         xml.url do
+          xml.original post.picture.url
           xml.default post.picture.url(:default)
           xml.thumb post.picture.url(:thumb)
         end

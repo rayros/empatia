@@ -28,6 +28,7 @@
                     <xs:element name="url">
                       <xs:complexType>
                         <xs:sequence>
+                          <xs:element type="xs:anyURI" name="original"/>
                           <xs:element type="xs:anyURI" name="default"/>
                           <xs:element type="xs:anyURI" name="thumb"/>
                         </xs:sequence>
