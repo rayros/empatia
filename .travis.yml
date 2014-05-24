@@ -4,5 +4,5 @@ rvm:
 env:
   - DB=sqlite
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+  - RAILS_ENV=test bundle exec foreman -e .travis_env run rake --trace db:migrate test
 bundler_args: --without production
