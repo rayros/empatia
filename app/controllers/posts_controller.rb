@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_admin!, only: [:mark_accepted, :mark_not_accepted]
   before_filter :require_permission, only: [:edit, :update, :destroy]
   expose(:post, finder: :find_by_slug, attributes: :post_params)
+  expose(:feed_posts) { Post.order("created_at DESC").limit(20) }
   expose(:accepted_posts) { Post.accepted.paginate(page: params[:page])  }
   expose(:waiting_posts) { Post.waiting.paginate(page: params[:page]) }
   expose(:hotness_posts) { Post.hot.paginate(page: params[:page]) }
@@ -27,6 +28,13 @@ class PostsController < ApplicationController
   # GET /posts/top 
   def top
     index_render top_posts
+  end
+
+  # GET /posts/feed.rss
+  def feed
+    respond_to do |format|
+      format.rss
+    end
   end
 
   # GET /posts/(slug)/edit
