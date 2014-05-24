@@ -32,9 +32,7 @@ class PostsController < ApplicationController
 
   # GET /posts/feed.rss
   def feed
-    respond_to do |format|
-      format.rss
-    end
+    render 'posts/feed.rss', layout: false
   end
 
   # GET /posts/(slug)/edit
