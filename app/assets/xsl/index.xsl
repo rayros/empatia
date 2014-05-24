@@ -36,7 +36,12 @@
                   <xsl:value-of select="id"/>
                 </td>
                 <td align="center">
-                  <xsl:value-of select="title"/>
+                  <xsl:element name="a">
+                    <xsl:attribute name="href">
+                      <xsl:value-of select="url"/>
+                    </xsl:attribute>
+                    <xsl:value-of select="title"/>
+                  </xsl:element>
                 </td>
                 <td align="center" >
                   <xsl:value-of select="description"/>

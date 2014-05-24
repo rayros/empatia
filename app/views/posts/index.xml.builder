@@ -10,6 +10,7 @@ xml.posts do
       xml.like_count post.like_count
       xml.share_count post.share_count
       xml.total_count post.total_count
+      xml.url post_url(post)
       xml.img do
         xml.file do
           xml.name post.picture_file_name
