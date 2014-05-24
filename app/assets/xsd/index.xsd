@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="posts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="post" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:positiveInteger" name="id"/>
+              <xs:element type="xs:string" name="title"/>
+              <xs:element type="xs:string" name="description"/>
+              <xs:element type="xs:nonNegativeInteger" name="comment_count"/>
+              <xs:element type="xs:nonNegativeInteger" name="like_count"/>
+              <xs:element type="xs:nonNegativeInteger" name="share_count"/>
+              <xs:element type="xs:nonNegativeInteger" name="total_count"/>
+              <xs:element type="xs:anyURI" name="url"/>
+              <xs:element name="img">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="file">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:nonNegativeInteger" name="size"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="url">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="default"/>
+                          <xs:element type="xs:string" name="thumb"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,6 +1,6 @@
 xml.instruct!
 xml.instruct! 'xml-stylesheet', {:href => asset_url('index.xsl'), :type=>'text/xsl'}
-xml.posts do
+xml.posts 'xmlns:xsi'=>'http://www.w3.org/2001/XMLSchema-instance', 'xsi:noNamespaceSchemaLocation' => asset_url('index.xsd')  do
   posts.each do |post|
     xml.post do
       xml.id post.id
