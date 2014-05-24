@@ -40,6 +40,8 @@ group :production do
   # Heroku gem
   gem 'rails_12factor'
 
+  # Heroku deflater
+  gem 'heroku-deflater'
 end
 # Facebook query language
 gem 'fql'
