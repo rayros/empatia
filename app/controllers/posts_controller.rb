@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   # PUT /posts/(slug)
   def update
     if post.save
-      render :index
+      redirect_to post, notice: 'Post was successfully update.'
     else
       render :new
     end
