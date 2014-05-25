@@ -39,8 +39,13 @@ class Post < ActiveRecord::Base
 
   # For friendly
   extend FriendlyId
-  friendly_id :title, use: [:slugged, :finders]
-
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+  def slug_candidates
+    [
+      :title,
+      [:title, :picture_file_name]
+    ]
+  end
   # Scopes
   scope :accepted, -> { where(accepted: true).order('created_at DESC') }
   scope :waiting, -> { where(accepted: false).order('created_at DESC') }
