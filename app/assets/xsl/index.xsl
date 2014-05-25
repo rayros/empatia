@@ -55,7 +55,7 @@
                       300
                     </xsl:attribute>
                     <xsl:attribute name="src">
-                      <xsl:copy-of select="img/url/default"/>
+                      <xsl:value-of select="img/url/default"/>
                     </xsl:attribute>
                   </img>  
                 </td>
