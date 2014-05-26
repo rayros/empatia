@@ -14,8 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-filestyle
-//= require_tree .
+//= require_tree ./sitewide
 
-$(":file").filestyle({
-  buttonName: "btn-primary"
-});
