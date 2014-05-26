@@ -7,7 +7,7 @@
     = post.description
   .post{itemscope: true, itemtype: 'http://schema.org/ImageObject'}
     %h1{itemprop: 'name'}= post.title
-    = image_tag post.picture.url(:default), alt: post.description, class: 'img-responsive center-block post', itemprop: 'contentURL'
+    = image_tag post.picture.url, alt: post.description, class: 'img-responsive center-block post', itemprop: 'contentURL'
     - if user_signed_in? and current_user.owner? post
       .btn-group.btn-group-justified
         = link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
