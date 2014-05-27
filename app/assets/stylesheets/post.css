@@ -1,13 +1,9 @@
-.post,
-.post-url{
-  margin-bottom: 10px;
-}
-
 .paginate {
+  margin-top: 20px;
   text-align: center;
 }
-.post .btn-group {
-  margin-bottom: 10px;
+.item .btn-group {
+  margin-top: 10px;
 }
 .comments {
   margin-top: 20px;
