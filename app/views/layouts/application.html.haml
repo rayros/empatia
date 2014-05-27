@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}
     %title= content_for?(:title) ? yield(:title) : "Empatia"
     %meta{:content => content_for?(:description) ? yield(:description) : "Daily funny pictures.", :name => "description"}
     = stylesheet_link_tag "application", :media => "all"
@@ -34,7 +34,6 @@
               = link_to 'RSS', feed_posts_url(format: "rss") 
           %ul.nav.navbar-nav.navbar-right
             = render 'layouts/navigation'
-    .container
-      .row.main
-        = render 'layouts/messages'
-        = yield
+    .containaer
+      = render 'layouts/messages'
+      = yield

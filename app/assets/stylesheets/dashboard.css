@@ -2,14 +2,8 @@
   text-align: center;
 }
 
-/*
- * Base structure
- */
 
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 50px;
-}
+
 .navbar-btn {
   margin-left: 10px;
 }
@@ -46,6 +40,7 @@ body {
     font-size: 10pt !important;
   }
 }
+
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
