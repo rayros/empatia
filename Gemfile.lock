@@ -11,6 +11,15 @@ GIT
     image_suckr (0.1.0)
 
 GIT
+  remote: git://github.com/rayros/paperclip-compression.git
+  revision: e8445f2206b97a5733148c31b254760393360cb0
+  specs:
+    paperclip-compression (0.3.6)
+      os (~> 0.9.6)
+      paperclip (>= 3.3)
+      ruby-imagespec (~> 0.3.1)
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 41da3a3c4c139964a9877c77220f94200d73c87a
   specs:
@@ -176,10 +185,6 @@ GEM
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     os (0.9.6)
-    paperclip-compression (0.3.6)
-      os (~> 0.9.6)
-      paperclip (>= 3.3)
-      ruby-imagespec (~> 0.3.1)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -320,7 +325,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   paperclip!
-  paperclip-compression
+  paperclip-compression!
   pg
   rails (= 4.0.4)
   rails_12factor

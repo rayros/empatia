@@ -70,7 +70,7 @@ gem 'aws-sdk'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 # Paperclip-compression
-gem 'paperclip-compression'
+gem 'paperclip-compression', github: 'rayros/paperclip-compression'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
