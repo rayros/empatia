@@ -3,10 +3,8 @@ ruby "2.0.0"
 group :development, :test do
   # foreman start
   gem 'foreman'
-
   # To get random images
   gem 'image_suckr', github: 'rayros/image_suckr'
-
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   # Guard rspec
@@ -21,18 +19,9 @@ group :development, :test do
   # Annotate
   # Tableki w bd dla modelu na górze
   gem 'annotate'
-  # Flay
-  # Szukanie podobieństw w kodzie
-  gem 'flay'
-  # ruby2ruby
-  # require for flay --diff
-  gem 'ruby2ruby'
-  gem "hirb"
   gem "rails_best_practices"
-  gem 'railroady'
+  gem 'simplecov', :require => false
 end
-
-gem 'simplecov', :require => false, :group => :test
 group :production do
   # Use postgresql as the database for Active Record
   gem 'pg'
@@ -79,6 +68,9 @@ gem 'aws-sdk'
 
 # Paperclip
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+
+# Paperclip-compression
+gem 'paperclip-compression'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
