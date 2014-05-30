@@ -1,7 +1,7 @@
 require "aws/s3"
 AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com"
 Kwejk::Application.configure do
-  # Paperclip config to amazon s3
+  # Paperclip config for amazon s3
   config.paperclip_defaults = {
     :storage => :s3,
     :bucket => ENV['FOG_DIRECTORY'],#'memes-demo',

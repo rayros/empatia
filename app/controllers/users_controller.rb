@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/(id)
   def show
     self.posts = user.posts.order(:accepted).paginate(page: params[:page]) if admin_signed_in?
-    self.posts = current_user.posts.order(:accepted).paginate(page: params[:page]) if user_signed_in?
+    self.posts = current_user.posts.order(:accepted).paginate(page: params[:page]) if user == current_user
   end
 
   # DELETE /users/(id)

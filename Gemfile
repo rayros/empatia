@@ -40,8 +40,6 @@ gem 'will_paginate-bootstrap'
 # Bootstrap
 gem 'bootstrap-sass'
 gem 'bootstrap-filestyle-rails', github: 'rayros/bootstrap-filestyle-rails'
-# FlatUI
-#gem 'flatui-rails', github: 'pkurek/flatui-rails'
 
 # http://decentexposure.info/
 gem 'decent_exposure'

@@ -15,6 +15,45 @@ class PostsController < ApplicationController
     index_render accepted_posts
   end
 
+  # GET /posts/(slug)
+  def show
+  end
+
+  # GET /posts/new
+  def new
+  end
+ 
+  # POST /posts 
+  def create
+    post.user = current_user if user_signed_in?
+    if post.save
+       redirect_to post, notice: 'Post was successfully created.'
+    else
+       render :new
+    end
+  end
+
+  # GET /posts/(slug)/edit
+  def edit
+  end
+
+  # PUT /posts/(slug)
+  def update
+    if post.save
+      redirect_to post, notice: 'Post was successfully update.'
+    else
+      render :new
+    end
+  end
+
+  # DELETE /posts/(slug)
+  def destroy
+    post.picture = nil
+    post.save
+    post.destroy
+    redirect_to posts_path
+  end
+
   # GET /posts/waiting_room
   def waiting_room
     index_render waiting_posts
@@ -35,52 +74,12 @@ class PostsController < ApplicationController
     render 'posts/feed.rss', layout: false
   end
 
-  # GET /posts/(slug)/edit
-  def edit
-  end
-
-  # GET /posts/(slug)
-  def show
-  end
-
-  # GET /posts/new
-  def new
-  end
-
-  # DELETE /posts/(slug)
-  def destroy
-    post.picture = nil
-    post.save
-    post.destroy
-    redirect_to posts_path
-  end
-
-  # PUT /posts/(slug)
-  def update
-    if post.save
-      redirect_to post, notice: 'Post was successfully update.'
-    else
-      render :new
-    end
-  end
-
   # GET /posts/(slug)/fb_update
   def fb_update
     fql = Fql.execute("select comment_count, like_count, share_count, total_count 
                         from link_stat where url = '#{post_url(post)}'")
     post.update!(fql.first)
     render json: post
-  end
- 
-  # POST /posts 
-  def create
-    post.user = current_user if user_signed_in?
-    post.accepted = false
-    if post.save
-       redirect_to post, notice: 'Post was successfully created.'
-    else
-       render :new
-    end
   end
 
   # GET /posts/(slug)/mark_accepted
