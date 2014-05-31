@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_admin!, only: [:index, :destroy]
   expose(:user)
   expose(:users) { User.all.paginate(page: params[:page]) }
-  expose(:posts) { Post.user_accepted(user).paginate(page: params[:page]) }
+  expose(:posts) { user.posts.accepted.paginate(page: params[:page]) }
   
   # GET /users only for admins
   def index
@@ -10,8 +10,9 @@ class UsersController < ApplicationController
 
   # GET /users/(id)
   def show
-    self.posts = user.posts.order(:accepted).paginate(page: params[:page]) if admin_signed_in?
-    self.posts = current_user.posts.order(:accepted).paginate(page: params[:page]) if user == current_user
+    if user == current_user or admin_signed_in?
+      self.posts = user.posts.order(:accepted).paginate(page: params[:page])
+    end
   end
 
   # DELETE /users/(id)

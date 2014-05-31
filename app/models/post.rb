@@ -53,7 +53,6 @@ class Post < ActiveRecord::Base
   scope :waiting, -> { where(accepted: false).order('created_at DESC') }
   scope :hot, -> { where(accepted: true).sort_by(&:hotness).reverse }
   scope :top, -> { where(accepted: true).order('total_count DESC, created_at DESC') }
-  scope :user_accepted, ->(user) { accepted.where(user: user) }
   # Methods
   def accepted!
     update_attribute(:accepted, true)
