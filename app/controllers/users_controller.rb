@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_admin!, only: [:index, :destroy]
-  expose(:user)
-  expose(:users) { User.all.paginate(page: params[:page]) }
+  expose(:user) { User.find(params[:id]) }
+  expose(:users) { User.all.page(params[:page]) }
   expose(:posts) { user.posts.accepted.paginate(page: params[:page]) }
   
   # GET /users only for admins
