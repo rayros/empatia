@@ -104,6 +104,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use unicorn as the app server
 gem 'unicorn'
 
+# Embed the V8 JavaScript interpreter into Ruby
+gem 'therubyracer'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
