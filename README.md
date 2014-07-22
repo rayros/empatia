@@ -1,7 +1,7 @@
 # README
 
 
-## TO CHANGE:
+## To change:
 
 ```
 ENV['FB_APP_ID'] - your facebook app id.
@@ -15,7 +15,7 @@ ENV['SECRET_TOKEN'] - your secret key
 ENV['DEVISE_SECRET_KEY'] - your devise sercet key
 ```
 
-## HOW TO CREATE ADMIN?
+## How to create admin?
   
 ```
 ENV['ADMIN_EMAIL'] - your admin email
@@ -23,7 +23,7 @@ ENV['ADMIN_PASSWD'] - your admin password
 rake db:add_admin
 ```
 
-## DEMO:
+## Demo:
 
 http://empatia.herokuapp.com/
 
@@ -36,21 +36,7 @@ git clone https://github.com/rayros/kwejk.git
 cd kwejk
 bundle --without production
 ```
-
 ### Development usage
-
-Create file `.env`
-
-``` touch .env ```
-
-Add to `.env` develop vars
-
-```
-SECRET_TOKEN=
-DEVISE_SECRET_KEY=
-ADMIN_EMAIL=
-ADMIN_PASSWD=
-```
 
 Migrate.
 
@@ -58,7 +44,7 @@ Migrate.
 foreman run rake db:migrate
 ```
 
-Create admin user.
+Create admin user. (login and password in `.env` file)
 
 ```
 foreman run rake db:add_admin
