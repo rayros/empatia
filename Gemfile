@@ -21,6 +21,8 @@ group :development, :test do
   gem 'annotate'
   gem "rails_best_practices"
   gem 'simplecov', :require => false
+
+  gem 'spring'
 end
 group :production do
   # Use postgresql as the database for Active Record
