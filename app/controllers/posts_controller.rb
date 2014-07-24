@@ -1,6 +1,7 @@
 require 'will_paginate/array'
 
 class PostsController < ApplicationController
+  protect_from_forgery :except => [:create]
   before_filter :authenticate_admin!, only: [:mark_accepted, :mark_not_accepted]
   before_filter :require_permission, only: [:edit, :update, :destroy]
   expose(:post, finder: :find_by_slug, attributes: :post_params)
