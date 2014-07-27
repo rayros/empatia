@@ -21,6 +21,9 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
+  config.after(:suite) do
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
   # For Factory girl
   config.include FactoryGirl::Syntax::Methods
 
