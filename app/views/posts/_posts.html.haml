@@ -7,9 +7,13 @@
         %h2{itemprop: 'name'}
           = post.title
           -if waiting? post 
-            %span{class: 'label label-warning pull-right'}= "Waiting to accepted"
+            %span.label.label-warning.pull-right= "Waiting to accepted"
         = link_to( image_tag( post.picture.url(:default),class: 'img-responsive center-block', alt: post.description, itemprop: 'contentURL'), post, class: 'center-block post-url')
         - if user_owner? post
+          - if admin_signed_in?
+            .panel.panel-default
+              .panel-heading= "Description: "
+              .panel-body= post.description
           .btn-group.btn-group-justified
             - if admin_signed_in?
               - if waiting? post
