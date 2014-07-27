@@ -11,6 +11,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   # Rspec
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   # Factory girl
   gem 'factory_girl_rails'
   # Better errors
