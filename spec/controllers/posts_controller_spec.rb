@@ -1,64 +1,93 @@
 require 'spec_helper'
-describe PostsController do
-  describe "GET 'index'" do
-    before(:all) do
-      Post.destroy_all
-      @posts = create_list(:post, 4)
-    end
 
-    it "returns http success" do
+describe PostsController, :type => :controller do
+  describe 'GET index' do
+    it 'renders the index template' do
       get :index
-      expect(response).to be_success
+      expect(response).to render_template('index')
     end
-
-    it "renders the index template" do
-      get :index
-      expect(response).to render_template("index")
-    end
-
-#    it "loads all of the posts into @posts" do
-#     get :index
-#     expect(assigns(:posts)).to eq(@posts)
-#   end
-
   end
-
-  describe "GET 'new'" do
-
-    it "returns http succes" do
-      get :new
-      expect(response).to be_success
+  describe 'GET waiting_room' do
+    it 'renders the waiting_room template' do
+      get :waiting_room
+      expect(response).to render_template('waiting_room')
     end
-
-    it "render the new template" do
-      get :new
-      expect(response).to render_template("new")
-    end
-
   end
-
-#  describe "GET 'waiting_room'" do
-#    before(:each) do
-#      get :waiting_room
-#    end
-
-#    it "returns http succes" do
-#      expect(response).to be_success
-#    end
-
-#    it "render the waiting_room template" do
-#      expect(response).to render_template("index")
-#    end
-
-#    it "loads all of waiting posts into @posts" do
-#      expect(assigns(:posts)).to eq( Post.find_by_accepted(false))
-#    end
-#  end
-
-#  describe "POST 'create'" do
-#    it "create post" do
-#      post_params = attributes_for(:post)
-#     expect { post :create, :post => post_params }.to change(Post, :count).by(1)
-#    end
-#  end
+  describe 'GET hotness' do
+    it 'renders the waiting_room template' do
+      get :hotness
+      expect(response).to render_template('hotness')
+    end
+  end
+  describe 'GET top' do
+    it 'renders the top template' do
+      get :top
+      expect(response).to render_template('top')
+    end
+  end
+  context 'user is singed in' do
+    let(:user) { create(:user) }
+    let(:user_post) { create(:post, user: user) }
+    before do
+      sign_in user
+    end
+    describe 'PUT update' do 
+      describe 'with valid params' do
+        it 'redirect to post page' do
+          put :update, { id: user_post.to_param, post: { title: 'new_title' } } 
+          expect(response).to redirect_to(post_url(Post.find(user_post.id)))
+        end
+      end
+      describe 'with invalid params' do
+        it 'render new post form' do
+          put :update, { id: user_post.to_param, post: { title: '' } } 
+          expect(response).to render_template('new')
+        end
+      end
+    end
+    describe 'DELETE destroy' do
+      it 'destroy user post' do
+        sign_in user
+        path = user_post.picture.path
+        puts path
+        expect { delete :destroy, { id: user_post.slug } }.to change(Post, :count).by(-1)
+        expect(File).not_to exist(path)
+        expect(Post).not_to exist(id: user_post.id)
+        expect(response).to redirect_to(posts_path)
+      end
+    end
+  end
+  context 'user is not singed in' do
+    describe 'POST create' do
+      before do
+        Post.destroy_all
+      end
+      let(:attributes) { attributes_for(:post, 
+        picture: fixture_file_upload(Rails.root.join("app/assets/images/sonic.png"), 'image/png')) } 
+      
+      describe 'with valid params' do 
+        it 'redirects to post page' do
+          expect { post :create, post: attributes }.to change(Post, :count).by(1)
+          expect(response).to redirect_to(post_url(Post.last)) 
+        end
+      end
+      describe 'with invalid params' do
+        it 'render new post form' do
+          invalid_attributes = attributes
+          invalid_attributes[:title] = nil
+          expect { post :create, post: invalid_attributes }.to change(Post, :count).by(0)
+          expect(response).to render_template('new')
+        end
+      end
+    end
+    describe 'PUT update' do
+      describe 'with valid params' do
+        let(:new_post) { create(:post) }
+        it 'redirect to user login page' do
+          put :update, { id: new_post.to_param, post: { title: 'new_title' } } 
+          expect(response).to redirect_to(new_user_session_path)
+        end
+      end
+    end
+  end
 end
