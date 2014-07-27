@@ -53,7 +53,7 @@ describe PostsController, :type => :controller do
         expect { delete :destroy, { id: user_post.slug } }.to change(Post, :count).by(-1)
         expect(File).not_to exist(path)
         expect(Post).not_to exist(id: user_post.id)
-        expect(response).to redirect_to(posts_path)
+        expect(response).to redirect_to(root_path)
       end
     end
   end

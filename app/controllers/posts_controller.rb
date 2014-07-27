@@ -52,7 +52,9 @@ class PostsController < ApplicationController
     post.picture = nil
     post.save
     post.destroy
-    redirect_to posts_path
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 
   # GET /posts/waiting_room
