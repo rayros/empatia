@@ -9,23 +9,3 @@
   margin-top: 20px;
   text-align: center;
 }
-@-webkit-keyframes loaderSprite {
-  from { background-position: 0px; } 
-  to { background-position: -2000px; } 
-} 
-@-moz-keyframes loaderSprite { 
-  from { background-position: 0px; } 
-  to { background-position: -2000px; } 
-} 
-@keyframes loaderSprite { 
-  from { background-position: 0px; } 
-  to { background-position: -2000px; } 
-} 
-.loader { 
-  width: 100px; 
-  height: 100px; 
-  background-image: image-url("sonic.png"); 
-  -webkit-animation: loaderSprite 1s steps(20, end) infinite; 
-  -moz-animation: loaderSprite 1s steps(20, end) infinite; 
-  animation: loaderSprite 1s steps(20, end) infinite; 
-} 
