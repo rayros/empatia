@@ -27,8 +27,8 @@
 
 class Post < ActiveRecord::Base
   belongs_to :user
-  validates :title, presence: true
-  validates :description, presence: true
+  validates_presence_of :title
+  validates_presence_of :description
   #validates :accepted, presence: true
   # For Paperclip pictures
   has_attached_file :picture,
