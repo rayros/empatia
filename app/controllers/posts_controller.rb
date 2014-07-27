@@ -99,7 +99,7 @@ class PostsController < ApplicationController
   def require_permission
     return if admin_signed_in? 
     return if current_user and current_user.owner? post
-    redirect_to root_path
+    redirect_to new_user_session_path
   end
 
   def post_params
