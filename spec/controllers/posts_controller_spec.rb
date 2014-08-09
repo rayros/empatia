@@ -25,6 +25,33 @@ describe PostsController, :type => :controller do
       expect(response).to render_template('top')
     end
   end
+  describe 'GET feed' do
+    it 'renders the feed.rss template' do
+      get :feed
+      expect(response).to render_template('posts/feed.rss')
+    end
+  end
+  context 'admin is singed in' do
+    let(:admin) { create(:admin) }
+    let(:new_post) { create(:post) }
+    before do
+      sign_in admin
+    end
+    describe 'GET mark_accepted' do
+      it 'should accepted this post and redirect to it' do
+        get :mark_accepted, { id: new_post.to_param }
+        expect(Post.find(new_post.id).accepted).to be true
+        expect(response).to redirect_to(post_url(new_post))
+      end
+    end
+    describe 'GET mark_not_accepted' do
+      it 'should not accepted this post and redirect to it' do
+        get :mark_not_accepted, { id: new_post.to_param }
+        expect(Post.find(new_post.id).accepted).to be false
+        expect(response).to redirect_to(post_url(new_post))
+      end
+    end
+  end
   context 'user is singed in' do
     let(:user) { create(:user) }
     let(:user_post) { create(:post, user: user) }
