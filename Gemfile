@@ -35,6 +35,9 @@ group :production do
   # Heroku deflater
   gem 'heroku-deflater'
 end
+# Themes
+gem 'atheme', github: 'rayros/kwejk-atheme-theme'
+
 # Facebook query language
 gem 'fql'
 # will_paginate

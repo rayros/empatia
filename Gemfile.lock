@@ -11,6 +11,15 @@ GIT
     image_suckr (0.1.0)
 
 GIT
+  remote: git://github.com/rayros/kwejk-atheme-theme.git
+  revision: 88e4430a978c62765e8c6f25012e5ee45519234e
+  specs:
+    atheme (0.0.3)
+      coffee-rails
+      haml-rails
+      rails (~> 4.1)
+
+GIT
   remote: git://github.com/rayros/paperclip-compression.git
   revision: e8445f2206b97a5733148c31b254760393360cb0
   specs:
@@ -21,7 +30,7 @@ GIT
 
 GIT
   remote: git://github.com/thoughtbot/paperclip.git
-  revision: dca87ec5d8038b2d436a75ad6119c8eb67b73e70
+  revision: e8c1dc8a26183cf10e5eac7fb29eb7bdcf51d01f
   specs:
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
@@ -63,7 +72,7 @@ GEM
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
-    aws-sdk (1.48.1)
+    aws-sdk (1.50.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
@@ -72,7 +81,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.2.0.0)
+    bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
     builder (3.2.2)
     celluloid (0.15.2)
@@ -106,7 +115,7 @@ GEM
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
     erubis (2.7.0)
-    excon (0.38.0)
+    excon (0.39.4)
     execjs (2.2.1)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -123,7 +132,7 @@ GEM
       fog-softlayer
       ipaddress (~> 0.5)
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.1.1)
+    fog-brightbox (0.2.0)
       fog-core (~> 1.22)
       fog-json
       inflecto
@@ -136,7 +145,7 @@ GEM
       net-ssh (>= 2.1.3)
     fog-json (1.0.0)
       multi_json (~> 1.0)
-    fog-softlayer (0.3.9)
+    fog-softlayer (0.3.13)
       fog-core
       fog-json
     foreman (0.74.0)
@@ -153,7 +162,7 @@ GEM
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
-    guard-rspec (4.2.10)
+    guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     haml (4.0.5)
@@ -285,7 +294,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    sitemap_generator (5.0.4)
+    sitemap_generator (5.0.5)
       builder
     slop (3.6.0)
     spring (1.1.3)
@@ -311,7 +320,7 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.2.2)
       coffee-rails
-    tzinfo (1.2.1)
+    tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
@@ -331,6 +340,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  atheme!
   aws-sdk
   bcrypt (~> 3.1.7)
   better_errors
