@@ -11,15 +11,6 @@ GIT
     image_suckr (0.1.0)
 
 GIT
-  remote: git://github.com/rayros/kwejk-atheme-theme.git
-  revision: 88e4430a978c62765e8c6f25012e5ee45519234e
-  specs:
-    atheme (0.0.3)
-      coffee-rails
-      haml-rails
-      rails (~> 4.1)
-
-GIT
   remote: git://github.com/rayros/paperclip-compression.git
   revision: e8445f2206b97a5733148c31b254760393360cb0
   specs:
@@ -37,6 +28,17 @@ GIT
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+
+PATH
+  remote: ../kwejk-atheme-theme
+  specs:
+    atheme (0.0.3)
+      bootstrap-filestyle-rails
+      bootstrap-sass
+      coffee-rails
+      haml-rails
+      jquery-rails
+      rails (~> 4.1)
 
 GEM
   remote: https://rubygems.org/
