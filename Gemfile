@@ -36,7 +36,7 @@ group :production do
   gem 'heroku-deflater'
 end
 # Themes
-gem 'atheme', path: '../kwejk-atheme-theme'
+gem 'atheme', github: 'rayros/kwejk-atheme-theme'
 
 # Facebook query language
 gem 'fql'
