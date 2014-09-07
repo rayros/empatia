@@ -8,10 +8,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = auto_discovery_link_tag :rss, "posts/feed.rss"
-    = render 'layouts/google_analytics'
     = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
-    = render 'layouts/facebook_sdk'
+    #fb-root{ "data-id" => "#{ENV['FB_APP_ID'] || 'NO ENV FB_APP_ID'}" }
     .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container-fluid
         .navbar-header
