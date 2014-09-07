@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
+
 ruby "2.0.0"
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.1'
+
 group :development, :test do
   # foreman start
   gem 'foreman'
@@ -35,8 +40,6 @@ group :production do
   # Heroku deflater
   gem 'heroku-deflater'
 end
-# Themes
-gem 'atheme', github: 'rayros/kwejk-atheme-theme'
 
 # Facebook query language
 gem 'fql'
@@ -75,9 +78,6 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 # Paperclip-compression
 gem 'paperclip-compression', github: 'rayros/paperclip-compression'
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
