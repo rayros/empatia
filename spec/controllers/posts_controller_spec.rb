@@ -90,7 +90,7 @@ describe PostsController, :type => :controller do
         Post.destroy_all
       end
       let(:attributes) { attributes_for(:post, 
-        picture: fixture_file_upload(Rails.root.join("app/assets/images/sonic.png"), 'image/png')) } 
+          picture: fixture_file_upload(Rails.root.join("spec/images/sonic.png"), 'image/png')) } 
       
       describe 'with valid params' do 
         it 'redirects to post page' do

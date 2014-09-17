@@ -1,7 +1,7 @@
 require 'factory_girl'
 
 def sample_file(filename: "sonic.png")
-    File.new("app/assets/images/#{filename}")
+    File.new("#{Rails.root}/spec/images/#{filename}")
 end
 
 FactoryGirl.define do
