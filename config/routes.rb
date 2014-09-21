@@ -1,10 +1,6 @@
 Kwejk::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
-  devise_for :admins, :skip => [:registrations, :passwords] 
-  as :admin do
-    get '' => 'posts#index', :as => :new_admin_registration
-    get '' =>'posts#index', :as => :new_admin_password
-  end
+  devise_for :admins
   root 'posts#index'
   resources :users, only: [:index, :show, :destroy]
   resources :posts do
