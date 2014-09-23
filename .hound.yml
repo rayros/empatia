@@ -1,0 +1,4 @@
+ruby:
+  enabled: true
+coffee_script:
+  enabled: true
