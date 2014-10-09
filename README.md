@@ -32,8 +32,8 @@ http://empatia.herokuapp.com/
 ### Installation
 
 ```
-git clone https://github.com/rayros/kwejk.git
-cd kwejk
+git clone https://github.com/rayros/empatia.git
+cd empatia
 bundle --without production
 ```
 ### Development usage
@@ -41,20 +41,20 @@ bundle --without production
 Migrate.
 
 ```
-foreman run rake db:migrate
+rake db:migrate
 ```
 
 Create admin user. (login and password in `.env` file)
 
 ```
-foreman run rake db:add_admin
+rake db:add_admin
 ```
 
 
 Run localhost server.
 
 ```
-foreman start -f Procfile.dev
+rails s
 ```
 
 Open website.

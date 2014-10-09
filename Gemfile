@@ -6,14 +6,8 @@ ruby "2.0.0"
 gem 'rails', '4.1'
 
 group :development, :test do
-  # foreman start
-  gem 'foreman'
-  # To get random images
-  gem 'image_suckr', github: 'rayros/image_suckr'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  # Guard rspec
-  gem 'guard-rspec', require: false
   # Rspec
   gem 'rspec-rails'
   gem 'shoulda-matchers'
