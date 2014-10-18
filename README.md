@@ -1,5 +1,9 @@
 # README
 
+## Documentation:
+
+http://www.rubydoc.info/github/rayros/empatia
+
 
 ## To change:
 
