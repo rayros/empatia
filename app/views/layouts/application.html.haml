@@ -8,6 +8,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = auto_discovery_link_tag :rss, "posts/feed.rss"
+    = render "shared/google_analytics"
     = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
     #fb-root{ "data-id" => "#{ENV['FB_APP_ID'] || 'NO ENV FB_APP_ID'}" }
