@@ -4,9 +4,12 @@ rvm:
 env:
   - DB=sqlite
   - RACK_ENV=test
+  - RAILS_ENV=test
   - PORT=3000
   - SECRET_TOKEN=265426bd30d4f41c899565d111e5fe9638e2d06b25fc450288267fb2366e93c70bd2c9be8f26816a324f93953fe4b3a1fff112248334db1c732cf1fc76e0e5d8
   - DEVISE_SECRET_KEY=721b8fc80b271e04611ec119deeb495bd910c67146d0a6b91d2ef27a0602b0ba8b945fd7aa56b817e81543a9dd27d67212290aee2dbd387fffce222467756c68
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+  - bundle exec rake --trace db:migrate
+  - bundle exec rake test
+  - bundle exec rspec
 bundler_args: --without production
